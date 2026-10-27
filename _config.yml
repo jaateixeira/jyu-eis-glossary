@@ -11,6 +11,9 @@ maintainer: José Teixeira
 # points at this repository automatically.
 glossary_repo: jaateixeira/jyu-eis-glossary
 
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+- jekyll-remote-theme # add this line to the plugins list if you already have one
 
 
 # The glossary's languages, in the order they appear in menus and lists.
