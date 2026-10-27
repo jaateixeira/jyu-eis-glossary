@@ -1,0 +1,61 @@
+title: JYU Glossary of Enterprise Information Systems
+title_fi: Yritysjärjestelmien sanasto
+description: >-
+  Glossary of enterprise information systems (ERP, CRM, business processes,
+  integration) in English, Finnish, Swedish, Spanish, Portuguese and French.
+institution: University of Jyväskylä
+course: Enterprise Information Systems (TJTP1140)
+maintainer: José Teixeira
+
+# Used only for local previews. On GitHub Pages the "Suggest a term" link
+# points at this repository automatically.
+glossary_repo: your-github-username/jyu-eis-glossary
+
+# The glossary's languages, in the order they appear in menus and lists.
+# To add one, add it here and give every term a term (and a def) in it.
+#   name     the language's name in English
+#   native   the language's name in itself (shown in menus and lists)
+#   also     the word placed before synonyms
+#   missing  shown when a term has no definition in this language yet
+languages:
+  - code: en
+    name: English
+    native: English
+    also: also
+    missing: No English definition yet.
+  - code: fi
+    name: Finnish
+    native: Suomi
+    also: myös
+    missing: Suomenkielistä määritelmää ei vielä ole.
+  - code: sv
+    name: Swedish
+    native: Svenska
+    also: även
+    missing: Ingen svensk definition ännu.
+  - code: es
+    name: Spanish
+    native: Español
+    also: también
+    missing: Aún no hay definición en español.
+  - code: pt
+    name: Portuguese
+    native: Português
+    also: também
+    missing: Ainda não há definição em português.
+  - code: fr
+    name: French
+    native: Français
+    also: aussi
+    missing: Pas encore de définition en français.
+
+# The two languages shown side by side when someone first opens the page.
+default_left: en
+default_right: fi
+
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - vendor

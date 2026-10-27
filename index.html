@@ -1,0 +1,159 @@
+---
+---
+{%- assign g = site.data.glossary -%}
+{%- assign terms = g.terms -%}
+{%- assign L = site.default_left -%}
+{%- assign R = site.default_right -%}
+{%- assign repo = site.github.repository_nwo | default: site.glossary_repo -%}
+{%- assign suggest_url = "https://github.com/" | append: repo | append: "/issues/new?template=new-term.yml" -%}
+{%- assign hero = g.terms | where: "id", "erp" | first -%}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.title }}</title>
+  <meta name="description" content="{{ site.description | strip }}">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/source-serif-4-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/glossary.css">
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+  <a class="skip" href="#terms">Skip to the terms</a>
+
+  <header class="masthead">
+    <div class="wrap">
+      <p class="course">{{ site.institution }}<br>{{ site.course }}</p>
+      <h1>{{ site.title }}</h1>
+      <p class="title-fi" lang="fi">{{ site.title_fi }}</p>
+
+      {%- if hero and hero.fi_split %}
+      <figure class="hero">
+        <a class="hero-word" href="#{{ hero.id }}">
+          <span class="vh" lang="fi">{{ hero.term.fi }}</span>
+          {%- include gloss.html term=hero -%}
+        </a>
+        <figcaption>
+          <p class="hero-en">{{ hero.term.en | downcase }}{% if hero.abbr %} ({{ hero.abbr }}){% endif %}</p>
+          <ul class="hero-langs">
+            {%- for lang in site.languages %}
+            {%- unless lang.code == "fi" or lang.code == "en" %}
+            <li><span class="hl-name">{{ lang.native }}</span> <span lang="{{ lang.code }}">{{ hero.term[lang.code] }}</span></li>
+            {%- endunless %}
+            {%- endfor %}
+          </ul>
+        </figcaption>
+      </figure>
+      {%- endif %}
+
+      <p class="intro">{{ terms.size }} terms used on the course, named and defined in {% for lang in site.languages %}{% if forloop.last %} and {% elsif forloop.index > 1 %}, {% endif %}{{ lang.name }}{% endfor %}. Choose any two languages to read side by side. Long Finnish compounds are split at their seams with a word-by-word gloss, so you can see how they are built.</p>
+    </div>
+  </header>
+
+  <div class="toolbar js-only">
+    <div class="wrap toolbar-row">
+      <label class="vh" for="q">Search terms in any of the glossary's languages</label>
+      <input id="q" type="search" placeholder="Search / Hae / Sök / Buscar / Pesquisar / Rechercher" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="wrap colheads" aria-hidden="true">
+      <span class="ch-l" id="ch-l">English</span><span class="ch-r" id="ch-r">Suomi</span>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <div class="filters js-only">
+      <div class="langs" role="group" aria-labelledby="langs-label">
+        <span id="langs-label" class="langs-label">Compare</span>
+        <label class="vh" for="lang-l">First language, used for sorting</label>
+        <select id="lang-l">
+          {%- for lang in site.languages %}
+          <option value="{{ lang.code }}" lang="{{ lang.code }}"{% if lang.code == L %} selected{% endif %}>{{ lang.native }}</option>
+          {%- endfor %}
+        </select>
+        <button type="button" id="swap" class="swap" aria-label="Swap the two languages" title="Swap">⇄</button>
+        <label class="vh" for="lang-r">Second language</label>
+        <select id="lang-r">
+          {%- for lang in site.languages %}
+          <option value="{{ lang.code }}" lang="{{ lang.code }}"{% if lang.code == R %} selected{% endif %}>{{ lang.native }}</option>
+          {%- endfor %}
+        </select>
+      </div>
+
+      <div class="cats" role="group" aria-label="Show one area">
+        <button type="button" data-cat="" aria-pressed="true">All areas</button>
+        {%- for c in g.categories %}
+        <button type="button" data-cat="{{ c.id }}" aria-pressed="false">{{ c.en }}<span class="cat-fi" lang="fi">{{ c.fi }}</span></button>
+        {%- endfor %}
+      </div>
+      <p class="count" id="count" aria-live="polite">{{ terms.size }} terms</p>
+    </div>
+
+    <div class="list" id="terms">
+      {%- assign prevcat = "" -%}
+      {%- for t in terms -%}
+      {%- assign c = g.categories | where: "id", t.category | first -%}
+      {%- if t.category != prevcat %}
+      <h2 class="letter is-group">{{ c.en }}</h2>
+      {%- assign prevcat = t.category -%}
+      {%- endif %}
+      <article class="term" id="{{ t.id }}" data-cat="{{ t.category }}"{% for lang in site.languages %} data-{{ lang.code }}="{{ t.term[lang.code] | escape }}"{% endfor %}>
+        {%- for lang in site.languages %}
+        {%- assign code = lang.code %}
+        <div class="hw" lang="{{ code }}" data-lang="{{ code }}" data-side="{% if code == L %}l{% elsif code == R %}r{% endif %}">
+          <h3><a class="self" href="#{{ t.id }}">
+            {%- if code == "fi" and t.fi_split -%}
+            <span class="vh">{{ t.term.fi }}</span>{% include gloss.html term=t %}
+            {%- else -%}
+            {{ t.term[code] }}
+            {%- endif -%}
+          </a>{% if t.abbr %} <abbr>{{ t.abbr }}</abbr>{% endif %}</h3>
+          {%- if t.alt[code] %}<p class="alt">{{ lang.also }} {{ t.alt[code] | join: ", " }}</p>{% endif %}
+        </div>
+        {%- endfor %}
+        {%- for lang in site.languages %}
+        {%- assign code = lang.code %}
+        <p class="def" lang="{{ code }}" data-lang="{{ code }}" data-side="{% if code == L %}l{% elsif code == R %}r{% endif %}">
+          {%- if t.def[code] -%}{{ t.def[code] }}{%- else -%}<span class="missing">{{ lang.missing }}</span>{%- endif -%}
+        </p>
+        {%- endfor %}
+        <ul class="others" aria-label="In the other languages">
+          {%- for lang in site.languages %}
+          <li data-lang="{{ lang.code }}" data-side="{% if lang.code == L %}l{% elsif lang.code == R %}r{% endif %}"><span class="o-name">{{ lang.native }}</span> <span class="o-term" lang="{{ lang.code }}">{{ t.term[lang.code] }}</span></li>
+          {%- endfor %}
+        </ul>
+        <dl class="meta">
+          {%- if c %}<div><dt>Area</dt><dd>{{ c.en }} / <span lang="fi">{{ c.fi }}</span></dd></div>{% endif %}
+          {%- if t.related %}<div><dt>Related</dt><dd>
+            {%- for rid in t.related -%}
+            {%- assign r = g.terms | where: "id", rid | first -%}
+            {%- if r %}<a href="#{{ r.id }}" data-related="{{ r.id }}">{{ r.term.en }}</a>{% unless forloop.last %}, {% endunless %}{% endif -%}
+            {%- endfor -%}
+          </dd></div>{% endif %}
+          {%- if t.course %}<div><dt>On the course</dt><dd>{{ t.course }}</dd></div>{% endif %}
+          {%- if t.see %}<div><dt>Course reading</dt><dd>{{ t.see | join: "; " }}</dd></div>{% endif %}
+          {%- if t.status == "draft" %}<div class="draft"><dt>Status</dt><dd>Draft, not yet reviewed</dd></div>{% endif %}
+        </dl>
+      </article>
+      {%- endfor %}
+    </div>
+
+    <div class="empty" id="empty" hidden>
+      <p>No term matches “<span id="empty-q"></span>”.</p>
+      <p><a id="empty-suggest" href="{{ suggest_url }}" data-base="{{ suggest_url }}">Suggest it as a new term</a> on GitHub, or ask in the course Q&amp;A forum on Moodle.</p>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <p>Maintained by {{ site.maintainer }} for {{ site.course }}, {{ site.institution }}. Entries marked draft have not yet been reviewed by the teaching team.</p>
+      <p>Missing a term or spotted an error in any language? <a href="{{ suggest_url }}">Suggest a term or a correction</a>.</p>
+      <p>Text licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Updated {{ site.time | date: "%-d.%-m.%Y" }}.</p>
+    </div>
+  </footer>
+
+  <script>window.GLOSSARY_LANGS = {{ site.languages | jsonify }}; window.GLOSSARY_DEFAULT = ["{{ L }}", "{{ R }}"];</script>
+  <script src="assets/js/glossary.js" defer></script>
+</body>
+</html>

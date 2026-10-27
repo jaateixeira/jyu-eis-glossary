@@ -1,0 +1,7 @@
+{%- assign parts = include.term.fi_split | split: "|" -%}
+{%- assign glosses = include.term.fi_gloss | split: "|" -%}
+<span class="gloss" aria-hidden="true">
+  {%- for p in parts -%}
+  <span class="morph"><span class="m-fi">{{ p }}</span>{%- if glosses[forloop.index0] -%}<span class="m-en" lang="en">{{ glosses[forloop.index0] }}</span>{%- endif -%}</span>
+  {%- endfor -%}
+</span>

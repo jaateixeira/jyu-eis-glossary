@@ -1,0 +1,1752 @@
+# JYU Glossary of Enterprise Information Systems — the data.
+# Every term on the site comes from this file. See README.md for how to add one.
+#
+# Languages (codes and names are set in _config.yml):
+#   en English · fi Finnish · sv Swedish · es Spanish · pt Portuguese · fr French
+#
+# Fields per term:
+#   id        short unique id, used in links (…/#erp)                required
+#   category  one of the category ids below                          required
+#   term      the term in each language   { en:, fi:, sv:, es:, pt:, fr: }   required
+#   def       the definition in each language (same keys)            required for en and fi
+#   abbr      the international abbreviation, e.g. ERP               optional
+#   alt       synonyms per language, e.g. { fr: [PGI] }              optional
+#   fi_split  the Finnish compound cut at its seams: toiminnan|ohjaus|järjestelmä
+#   fi_gloss  a word-by-word English gloss, one per part: of operations|control|system
+#   related   ids of related terms (list)                            optional
+#   see       course readings (list)                                 optional
+#   course    where the term comes up on the course (English)        optional
+#   status    draft → shown as "not yet reviewed". Delete the line once reviewed.
+
+categories:
+  - id: systems
+    en: Types of IS
+    fi: Järjestelmätyypit
+  - id: erp
+    en: ERP operations
+    fi: Toiminnanohjaus
+  - id: crm
+    en: Customers
+    fi: Asiakkuudet
+  - id: process
+    en: Processes
+    fi: Prosessit
+  - id: data
+    en: Data & integration
+    fi: Tieto ja integraatio
+  - id: implementation
+    en: Implementation
+    fi: Käyttöönotto
+  - id: strategy
+    en: Strategy
+    fi: Strategia
+
+terms:
+
+  # ── Types of information systems ─────────────────────────────────
+
+  - id: information-system
+    category: systems
+    abbr: IS
+    term:
+      en: Information system
+      fi: tietojärjestelmä
+      sv: informationssystem
+      es: sistema de información
+      pt: sistema de informação
+      fr: système d'information
+    alt:
+      fr: [SI]
+    fi_split: tieto|järjestelmä
+    fi_gloss: information|system
+    def:
+      en: >-
+        A combination of people, data, procedures and technology that collects,
+        processes, stores and distributes information to support an
+        organisation's operations and decisions.
+      fi: >-
+        Ihmisten, tiedon, toimintatapojen ja teknologian kokonaisuus, joka kerää,
+        käsittelee, tallentaa ja välittää tietoa organisaation toiminnan ja
+        päätöksenteon tueksi.
+      sv: >-
+        En kombination av människor, data, rutiner och teknik som samlar in,
+        bearbetar, lagrar och sprider information för att stödja en
+        organisations verksamhet och beslut.
+      es: >-
+        Combinación de personas, datos, procedimientos y tecnología que recoge,
+        procesa, almacena y distribuye información para apoyar las operaciones
+        y las decisiones de una organización.
+      pt: >-
+        Combinação de pessoas, dados, procedimentos e tecnologia que recolhe,
+        processa, armazena e distribui informação para apoiar as operações e as
+        decisões de uma organização.
+      fr: >-
+        Ensemble de personnes, de données, de procédures et de technologies qui
+        collecte, traite, stocke et diffuse l'information pour soutenir les
+        activités et les décisions d'une organisation.
+    related: [enterprise-system, tps, mis]
+    status: draft
+
+  - id: enterprise-system
+    category: systems
+    term:
+      en: Enterprise system
+      fi: yritysjärjestelmä
+      sv: verksamhetssystem
+      es: sistema empresarial
+      pt: sistema empresarial
+      fr: système d'entreprise
+    alt:
+      fr: [progiciel d'entreprise]
+    fi_split: yritys|järjestelmä
+    fi_gloss: enterprise|system
+    def:
+      en: >-
+        A packaged software system that supports processes across the whole
+        organisation from a shared database. ERP, CRM and SCM systems are the
+        main types.
+      fi: >-
+        Valmisohjelmistoon perustuva järjestelmä, joka tukee koko organisaation
+        prosesseja yhteisen tietokannan varassa. Keskeisiä tyyppejä ovat ERP-,
+        CRM- ja SCM-järjestelmät.
+      sv: >-
+        Ett standardiserat programvarusystem som stöder processer i hela
+        organisationen utifrån en gemensam databas. ERP-, CRM- och SCM-system är
+        de viktigaste typerna.
+      es: >-
+        Sistema de software estándar que da soporte a los procesos de toda la
+        organización a partir de una base de datos compartida. Los principales
+        tipos son los sistemas ERP, CRM y SCM.
+      pt: >-
+        Sistema de software normalizado que suporta os processos de toda a
+        organização a partir de uma base de dados partilhada. Os principais
+        tipos são os sistemas ERP, CRM e SCM.
+      fr: >-
+        Progiciel qui prend en charge les processus de toute l'organisation à
+        partir d'une base de données partagée. Les principaux types sont les
+        systèmes ERP, CRM et SCM.
+    related: [erp, crm, scm]
+    see: ["Davenport (1998)", "Winter, Bender & Aier (2024)"]
+    status: draft
+
+  - id: tps
+    category: systems
+    abbr: TPS
+    term:
+      en: Transaction processing system
+      fi: tapahtumankäsittelyjärjestelmä
+      sv: transaktionsbehandlingssystem
+      es: sistema de procesamiento de transacciones
+      pt: sistema de processamento de transações
+      fr: système de traitement des transactions
+    fi_split: tapahtuman|käsittely|järjestelmä
+    fi_gloss: of a transaction|processing|system
+    def:
+      en: >-
+        A system that records the routine, day-to-day transactions of a
+        business, such as sales, payments and stock movements.
+      fi: >-
+        Järjestelmä, joka kirjaa organisaation rutiininomaiset päivittäiset
+        tapahtumat, kuten myynnit, maksut ja varastosiirrot.
+      sv: >-
+        Ett system som registrerar verksamhetens rutinmässiga, dagliga
+        transaktioner, till exempel försäljning, betalningar och lagerrörelser.
+      es: >-
+        Sistema que registra las transacciones rutinarias y diarias de una
+        empresa, como ventas, pagos y movimientos de existencias.
+      pt: >-
+        Sistema que regista as transações rotineiras do dia a dia de uma
+        empresa, como vendas, pagamentos e movimentos de existências.
+      fr: >-
+        Système qui enregistre les transactions courantes et quotidiennes d'une
+        entreprise, comme les ventes, les paiements et les mouvements de stock.
+    related: [transaction-data, mis]
+    status: draft
+
+  - id: mis
+    category: systems
+    abbr: MIS
+    term:
+      en: Management information system
+      fi: johdon tietojärjestelmä
+      sv: ledningsinformationssystem
+      es: sistema de información para la dirección
+      pt: sistema de informação de gestão
+      fr: système d'information de gestion
+    alt:
+      es: [sistema de información gerencial]
+    def:
+      en: >-
+        A system that summarises transaction data into regular reports for
+        managers.
+      fi: >-
+        Järjestelmä, joka tiivistää tapahtumatietoa säännöllisiksi raporteiksi
+        johdon käyttöön.
+      sv: >-
+        Ett system som sammanfattar transaktionsdata i regelbundna rapporter för
+        chefer.
+      es: >-
+        Sistema que resume los datos de las transacciones en informes periódicos
+        para los directivos.
+      pt: >-
+        Sistema que resume os dados das transações em relatórios periódicos para
+        os gestores.
+      fr: >-
+        Système qui résume les données de transaction en rapports réguliers
+        destinés aux gestionnaires.
+    related: [tps, dss, bi]
+    status: draft
+
+  - id: dss
+    category: systems
+    abbr: DSS
+    term:
+      en: Decision support system
+      fi: päätöksenteon tukijärjestelmä
+      sv: beslutsstödsystem
+      es: sistema de apoyo a la decisión
+      pt: sistema de apoio à decisão
+      fr: système d'aide à la décision
+    def:
+      en: >-
+        An interactive system that helps managers analyse data and models when
+        making decisions that are not routine.
+      fi: >-
+        Vuorovaikutteinen järjestelmä, joka auttaa johtoa analysoimaan tietoa ja
+        malleja silloin, kun päätökset eivät ole rutiininomaisia.
+      sv: >-
+        Ett interaktivt system som hjälper chefer att analysera data och modeller
+        när de fattar beslut som inte är rutinmässiga.
+      es: >-
+        Sistema interactivo que ayuda a los directivos a analizar datos y modelos
+        cuando toman decisiones que no son rutinarias.
+      pt: >-
+        Sistema interativo que ajuda os gestores a analisar dados e modelos
+        quando tomam decisões que não são rotineiras.
+      fr: >-
+        Système interactif qui aide les gestionnaires à analyser des données et
+        des modèles lorsqu'ils prennent des décisions non routinières.
+    related: [mis, bi]
+    status: draft
+
+  - id: bi
+    category: systems
+    abbr: BI
+    term:
+      en: Business intelligence
+      fi: liiketoimintatiedon hallinta
+      sv: business intelligence
+      es: inteligencia de negocio
+      pt: inteligência de negócio
+      fr: informatique décisionnelle
+    alt:
+      fi: [liiketoimintatiedon analytiikka]
+      sv: [affärsintelligens, beslutsstöd]
+      es: [inteligencia empresarial]
+      fr: [business intelligence]
+    def:
+      en: >-
+        The tools and practices for collecting, analysing and presenting
+        business data to support decisions, typically through reports and
+        dashboards.
+      fi: >-
+        Työkalut ja käytännöt liiketoimintatiedon keräämiseen, analysointiin ja
+        esittämiseen päätöksenteon tueksi, tyypillisesti raporttien ja
+        koontinäyttöjen avulla.
+      sv: >-
+        Verktyg och arbetssätt för att samla in, analysera och presentera
+        verksamhetsdata som stöd för beslut, vanligen i form av rapporter och
+        instrumentpaneler.
+      es: >-
+        Herramientas y prácticas para recoger, analizar y presentar datos de
+        negocio como apoyo a las decisiones, normalmente mediante informes y
+        cuadros de mando.
+      pt: >-
+        Ferramentas e práticas para recolher, analisar e apresentar dados de
+        negócio como apoio às decisões, normalmente através de relatórios e
+        painéis de controlo.
+      fr: >-
+        Outils et pratiques permettant de collecter, d'analyser et de présenter
+        les données de l'entreprise pour appuyer les décisions, généralement au
+        moyen de rapports et de tableaux de bord.
+    related: [mis, sql]
+    status: draft
+
+  # ── ERP operations ───────────────────────────────────────────────
+
+  - id: erp
+    category: erp
+    abbr: ERP
+    term:
+      en: Enterprise resource planning
+      fi: toiminnanohjausjärjestelmä
+      sv: affärssystem
+      es: planificación de recursos empresariales
+      pt: sistema integrado de gestão empresarial
+      fr: progiciel de gestion intégré
+    alt:
+      fi: [ERP-järjestelmä]
+      sv: [ERP-system]
+      es: [sistema ERP]
+      fr: [PGI]
+    fi_split: toiminnan|ohjaus|järjestelmä
+    fi_gloss: of operations|control|system
+    def:
+      en: >-
+        An integrated software suite that runs core business processes – such
+        as finance, purchasing, inventory, production and sales – on a single
+        shared database.
+      fi: >-
+        Integroitu ohjelmistokokonaisuus, joka hoitaa keskeisiä
+        liiketoimintaprosesseja – kuten taloushallintoa, hankintoja, varastoa,
+        tuotantoa ja myyntiä – yhden yhteisen tietokannan varassa.
+      sv: >-
+        En integrerad programsvit som driver kärnprocesser – till exempel
+        ekonomi, inköp, lager, produktion och försäljning – i en enda gemensam
+        databas.
+      es: >-
+        Conjunto integrado de software que gestiona los procesos centrales de la
+        empresa – como finanzas, compras, inventario, producción y ventas – sobre
+        una única base de datos compartida.
+      pt: >-
+        Conjunto integrado de software que gere os processos centrais da empresa
+        – como finanças, compras, existências, produção e vendas – sobre uma
+        única base de dados partilhada.
+      fr: >-
+        Suite logicielle intégrée qui gère les processus centraux de
+        l'entreprise – finance, achats, stocks, production, ventes – à partir
+        d'une base de données unique et partagée.
+    related: [crm, scm, module, master-data]
+    see: ["Davenport (1998)", "Akkermans et al. (2003)"]
+    course: The course uses Dolibarr, an open-source ERP/CRM.
+    status: draft
+
+  - id: module
+    category: erp
+    term:
+      en: Module
+      fi: moduuli
+      sv: modul
+      es: módulo
+      pt: módulo
+      fr: module
+    def:
+      en: >-
+        A functional part of an ERP or CRM suite, such as accounting, inventory
+        or sales, that can be switched on separately but shares its data with
+        the other parts.
+      fi: >-
+        ERP- tai CRM-kokonaisuuden toiminnallinen osa, kuten kirjanpito, varasto
+        tai myynti, joka voidaan ottaa käyttöön erikseen mutta joka jakaa
+        tietonsa muiden osien kanssa.
+      sv: >-
+        En funktionell del av en ERP- eller CRM-svit, till exempel bokföring,
+        lager eller försäljning, som kan aktiveras separat men delar sina data
+        med de andra delarna.
+      es: >-
+        Parte funcional de una suite ERP o CRM, como contabilidad, inventario o
+        ventas, que puede activarse por separado pero comparte sus datos con las
+        demás partes.
+      pt: >-
+        Parte funcional de uma solução ERP ou CRM, como contabilidade,
+        existências ou vendas, que pode ser ativada separadamente mas partilha
+        os seus dados com as restantes partes.
+      fr: >-
+        Partie fonctionnelle d'une suite ERP ou CRM, comme la comptabilité, les
+        stocks ou les ventes, qui peut être activée séparément mais partage ses
+        données avec les autres parties.
+    related: [erp, configuration]
+    status: draft
+
+  - id: sales-order
+    category: erp
+    term:
+      en: Sales order
+      fi: myyntitilaus
+      sv: kundorder
+      es: pedido de venta
+      pt: encomenda de cliente
+      fr: commande client
+    alt:
+      sv: [försäljningsorder]
+      es: [orden de venta]
+      pt: [encomenda de venda]
+    fi_split: myynti|tilaus
+    fi_gloss: sales|order
+    def:
+      en: >-
+        A confirmed customer order recorded in the system. It triggers delivery
+        and, later, invoicing.
+      fi: >-
+        Järjestelmään kirjattu, vahvistettu asiakkaan tilaus. Se käynnistää
+        toimituksen ja myöhemmin laskutuksen.
+      sv: >-
+        En bekräftad kundbeställning som registrerats i systemet. Den utlöser
+        leverans och senare fakturering.
+      es: >-
+        Pedido confirmado de un cliente registrado en el sistema. Desencadena la
+        entrega y, más tarde, la facturación.
+      pt: >-
+        Encomenda confirmada de um cliente, registada no sistema. Desencadeia a
+        entrega e, mais tarde, a faturação.
+      fr: >-
+        Commande confirmée d'un client, enregistrée dans le système. Elle
+        déclenche la livraison puis la facturation.
+    related: [order-to-cash, invoice, purchase-order]
+    course: Hands-on Exercise 1
+    status: draft
+
+  - id: purchase-order
+    category: erp
+    abbr: PO
+    term:
+      en: Purchase order
+      fi: ostotilaus
+      sv: inköpsorder
+      es: pedido de compra
+      pt: encomenda a fornecedor
+      fr: commande fournisseur
+    alt:
+      es: [orden de compra]
+      pt: [nota de encomenda]
+      fr: [bon de commande]
+    fi_split: osto|tilaus
+    fi_gloss: purchase|order
+    def:
+      en: >-
+        An order sent to a supplier for goods or services. It is later matched
+        against the delivery and the supplier's invoice.
+      fi: >-
+        Toimittajalle lähetetty tilaus tavaroista tai palveluista. Se
+        täsmäytetään myöhemmin toimitukseen ja toimittajan laskuun.
+      sv: >-
+        En beställning av varor eller tjänster som skickas till en leverantör.
+        Den stäms senare av mot leveransen och leverantörens faktura.
+      es: >-
+        Pedido de bienes o servicios enviado a un proveedor. Más tarde se
+        concilia con la entrega y con la factura del proveedor.
+      pt: >-
+        Encomenda de bens ou serviços enviada a um fornecedor. Mais tarde é
+        conferida com a entrega e com a fatura do fornecedor.
+      fr: >-
+        Commande de biens ou de services envoyée à un fournisseur. Elle est
+        ensuite rapprochée de la livraison et de la facture du fournisseur.
+    related: [procure-to-pay, invoice, sales-order]
+    status: draft
+
+  - id: invoice
+    category: erp
+    term:
+      en: Invoice
+      fi: lasku
+      sv: faktura
+      es: factura
+      pt: fatura
+      fr: facture
+    alt:
+      fi: [myyntilasku, ostolasku]
+      sv: [kundfaktura, leverantörsfaktura]
+      es: [factura de venta, factura de compra]
+      pt: [fatura de venda, fatura de compra]
+      fr: [facture de vente, facture d'achat]
+    def:
+      en: >-
+        A document requesting payment for delivered goods or services. Invoices
+        sent to customers are sales invoices; invoices received from suppliers
+        are purchase invoices.
+      fi: >-
+        Maksua pyytävä asiakirja toimitetuista tavaroista tai palveluista.
+        Asiakkaille lähetetään myyntilaskuja, toimittajilta saadaan ostolaskuja.
+      sv: >-
+        Ett dokument som begär betalning för levererade varor eller tjänster.
+        Fakturor till kunder är kundfakturor; fakturor från leverantörer är
+        leverantörsfakturor.
+      es: >-
+        Documento que solicita el pago de bienes o servicios entregados. Las
+        facturas emitidas a clientes son facturas de venta; las recibidas de
+        proveedores, facturas de compra.
+      pt: >-
+        Documento que solicita o pagamento de bens ou serviços entregues. As
+        faturas emitidas a clientes são faturas de venda; as recebidas de
+        fornecedores são faturas de compra.
+      fr: >-
+        Document qui demande le paiement de biens ou de services livrés. Les
+        factures adressées aux clients sont des factures de vente ; celles reçues
+        des fournisseurs, des factures d'achat.
+    related: [sales-order, order-to-cash]
+    course: Hands-on Exercise 1
+    status: draft
+
+  - id: inventory
+    category: erp
+    term:
+      en: Inventory
+      fi: varasto
+      sv: lager
+      es: inventario
+      pt: existências
+      fr: stocks
+    alt:
+      en: [stock, stock level]
+      fi: [varastosaldo]
+      sv: [lagersaldo]
+      es: [existencias]
+      pt: [inventário, stock]
+      fr: [inventaire]
+    def:
+      en: >-
+        The goods a company holds for sale or production. The stock level is
+        the quantity on hand at a given moment.
+      fi: >-
+        Yrityksen myyntiä tai tuotantoa varten hallussa pitämät tavarat.
+        Varastosaldo on käytettävissä oleva määrä tietyllä hetkellä.
+      sv: >-
+        De varor ett företag har för försäljning eller produktion. Lagersaldot är
+        den kvantitet som finns i lager vid en viss tidpunkt.
+      es: >-
+        Bienes que una empresa mantiene para la venta o la producción. El nivel
+        de existencias es la cantidad disponible en un momento dado.
+      pt: >-
+        Bens que uma empresa detém para venda ou produção. O nível de
+        existências é a quantidade disponível num dado momento.
+      fr: >-
+        Biens qu'une entreprise détient pour la vente ou la production. Le
+        niveau de stock est la quantité disponible à un moment donné.
+    related: [wms, scm]
+    status: draft
+
+  - id: wms
+    category: erp
+    abbr: WMS
+    term:
+      en: Warehouse management system
+      fi: varastonhallintajärjestelmä
+      sv: lagerhanteringssystem
+      es: sistema de gestión de almacenes
+      pt: sistema de gestão de armazém
+      fr: système de gestion d'entrepôt
+    alt:
+      es: [SGA]
+    fi_split: varaston|hallinta|järjestelmä
+    fi_gloss: of a warehouse|management|system
+    def:
+      en: >-
+        A system that controls warehouse work – receiving, put-away, picking and
+        shipping – down to individual storage locations.
+      fi: >-
+        Järjestelmä, joka ohjaa varastotyötä – vastaanottoa, hyllytystä,
+        keräilyä ja lähettämistä – yksittäisten varastopaikkojen tasolla.
+      sv: >-
+        Ett system som styr arbetet i lagret – inleverans, inlagring, plock och
+        utleverans – ända ner till enskilda lagerplatser.
+      es: >-
+        Sistema que controla el trabajo del almacén – recepción, ubicación,
+        preparación de pedidos y expedición – hasta el nivel de cada ubicación.
+      pt: >-
+        Sistema que controla o trabalho do armazém – receção, arrumação, picking
+        e expedição – até ao nível de cada localização.
+      fr: >-
+        Système qui pilote le travail de l'entrepôt – réception, rangement,
+        préparation de commandes et expédition – jusqu'au niveau de chaque
+        emplacement.
+    related: [inventory, scm]
+    status: draft
+
+  - id: scm
+    category: erp
+    abbr: SCM
+    term:
+      en: Supply chain management
+      fi: toimitusketjun hallinta
+      sv: försörjningskedjehantering
+      es: gestión de la cadena de suministro
+      pt: gestão da cadeia de abastecimento
+      fr: gestion de la chaîne logistique
+    alt:
+      sv: [styrning av försörjningskedjan]
+    def:
+      en: >-
+        Coordinating the flow of goods, information and money from suppliers,
+        through the company, to its customers.
+      fi: >-
+        Tavara-, tieto- ja rahavirtojen koordinointi toimittajilta yrityksen
+        kautta asiakkaille.
+      sv: >-
+        Samordning av flödet av varor, information och pengar från leverantörer,
+        genom företaget, till dess kunder.
+      es: >-
+        Coordinación del flujo de bienes, información y dinero desde los
+        proveedores, a través de la empresa, hasta sus clientes.
+      pt: >-
+        Coordenação do fluxo de bens, informação e dinheiro desde os
+        fornecedores, passando pela empresa, até aos seus clientes.
+      fr: >-
+        Coordination des flux de biens, d'information et d'argent depuis les
+        fournisseurs, à travers l'entreprise, jusqu'à ses clients.
+    related: [erp, inventory, wms]
+    see: ["Akkermans et al. (2003)", "Tarafdar & Qrunfleh (2017)"]
+    status: draft
+
+  # ── Customers ────────────────────────────────────────────────────
+
+  - id: crm
+    category: crm
+    abbr: CRM
+    term:
+      en: Customer relationship management
+      fi: asiakkuudenhallintajärjestelmä
+      sv: kundrelationshantering
+      es: gestión de la relación con el cliente
+      pt: gestão da relação com o cliente
+      fr: gestion de la relation client
+    alt:
+      fi: [asiakkuudenhallinta, CRM-järjestelmä]
+      sv: [CRM-system]
+      es: [sistema CRM]
+      pt: [sistema CRM]
+      fr: [GRC]
+    fi_split: asiakkuuden|hallinta|järjestelmä
+    fi_gloss: of customership|management|system
+    def:
+      en: >-
+        A system, and a way of working, for managing an organisation's
+        interactions with customers and prospects: contacts, sales
+        opportunities, marketing campaigns and service requests.
+      fi: >-
+        Järjestelmä ja toimintatapa organisaation ja sen asiakkaiden sekä
+        potentiaalisten asiakkaiden välisen vuorovaikutuksen hallintaan:
+        yhteystiedot, myyntimahdollisuudet, markkinointikampanjat ja
+        palvelupyynnöt.
+      sv: >-
+        Ett system, och ett arbetssätt, för att hantera organisationens kontakter
+        med kunder och potentiella kunder: kontaktuppgifter, säljmöjligheter,
+        marknadsföringskampanjer och serviceärenden.
+      es: >-
+        Sistema, y forma de trabajar, para gestionar las interacciones de una
+        organización con clientes y clientes potenciales: contactos,
+        oportunidades de venta, campañas de marketing y solicitudes de servicio.
+      pt: >-
+        Sistema, e forma de trabalhar, para gerir as interações de uma
+        organização com clientes e potenciais clientes: contactos, oportunidades
+        de venda, campanhas de marketing e pedidos de assistência.
+      fr: >-
+        Système, et manière de travailler, pour gérer les interactions d'une
+        organisation avec ses clients et prospects : contacts, opportunités
+        commerciales, campagnes marketing et demandes de service.
+    related: [erp, lead, opportunity, segmentation]
+    see: ["Coltman (2007)", "Padilla & Ascarza (2021)"]
+    status: draft
+
+  - id: lead
+    category: crm
+    term:
+      en: Lead
+      fi: liidi
+      sv: lead
+      es: cliente potencial
+      pt: potencial cliente
+      fr: prospect
+    alt:
+      en: [prospect]
+      fi: [prospekti]
+      sv: [prospekt, potentiell kund]
+      es: [lead, prospecto]
+      pt: [lead]
+      fr: [lead]
+    def:
+      en: >-
+        A potential customer who has shown interest but has not yet bought.
+      fi: >-
+        Potentiaalinen asiakas, joka on osoittanut kiinnostusta mutta ei ole
+        vielä ostanut.
+      sv: >-
+        En potentiell kund som har visat intresse men ännu inte köpt.
+      es: >-
+        Posible cliente que ha mostrado interés pero que todavía no ha comprado.
+      pt: >-
+        Possível cliente que mostrou interesse mas que ainda não comprou.
+      fr: >-
+        Client potentiel qui a manifesté de l'intérêt mais n'a pas encore acheté.
+    related: [opportunity, crm]
+    status: draft
+
+  - id: opportunity
+    category: crm
+    term:
+      en: Sales opportunity
+      fi: myyntimahdollisuus
+      sv: säljmöjlighet
+      es: oportunidad de venta
+      pt: oportunidade de venda
+      fr: opportunité commerciale
+    alt:
+      sv: [affärsmöjlighet]
+      pt: [oportunidade de negócio]
+    fi_split: myynti|mahdollisuus
+    fi_gloss: sales|opportunity
+    def:
+      en: >-
+        A qualified chance to sell to a customer, tracked through the stages of
+        the sales pipeline with an expected value and probability.
+      fi: >-
+        Arvioitu mahdollisuus myydä asiakkaalle. Sitä seurataan myyntiputken
+        vaiheiden läpi arvioidun arvon ja todennäköisyyden kanssa.
+      sv: >-
+        En kvalificerad möjlighet att sälja till en kund, som följs genom
+        säljprocessens steg med ett förväntat värde och en sannolikhet.
+      es: >-
+        Posibilidad cualificada de vender a un cliente, que se sigue a través de
+        las etapas del embudo de ventas con un valor y una probabilidad
+        estimados.
+      pt: >-
+        Possibilidade qualificada de vender a um cliente, acompanhada ao longo
+        das fases do funil de vendas com um valor e uma probabilidade estimados.
+      fr: >-
+        Possibilité qualifiée de vendre à un client, suivie à travers les étapes
+        du pipeline commercial avec une valeur et une probabilité estimées.
+    related: [lead, crm]
+    status: draft
+
+  - id: segmentation
+    category: crm
+    term:
+      en: Customer segmentation
+      fi: asiakassegmentointi
+      sv: kundsegmentering
+      es: segmentación de clientes
+      pt: segmentação de clientes
+      fr: segmentation de la clientèle
+    fi_split: asiakas|segmentointi
+    fi_gloss: customer|segmentation
+    def:
+      en: >-
+        Dividing customers into groups with similar needs or value, so that
+        marketing, sales and service can treat each group appropriately.
+      fi: >-
+        Asiakkaiden jakaminen ryhmiin, joilla on samankaltaiset tarpeet tai
+        arvo, jotta markkinointi, myynti ja palvelu voivat kohdella kutakin
+        ryhmää sopivasti.
+      sv: >-
+        Att dela in kunderna i grupper med liknande behov eller värde, så att
+        marknadsföring, försäljning och service kan behandla varje grupp på rätt
+        sätt.
+      es: >-
+        División de los clientes en grupos con necesidades o valor similares,
+        para que marketing, ventas y servicio puedan tratar a cada grupo de forma
+        adecuada.
+      pt: >-
+        Divisão dos clientes em grupos com necessidades ou valor semelhantes,
+        para que o marketing, as vendas e o serviço possam tratar cada grupo de
+        forma adequada.
+      fr: >-
+        Division des clients en groupes aux besoins ou à la valeur similaires,
+        afin que le marketing, les ventes et le service traitent chaque groupe de
+        manière adaptée.
+    related: [crm, clv]
+    status: draft
+
+  - id: clv
+    category: crm
+    abbr: CLV
+    term:
+      en: Customer lifetime value
+      fi: asiakkaan elinkaariarvo
+      sv: kundlivstidsvärde
+      es: valor del ciclo de vida del cliente
+      pt: valor do ciclo de vida do cliente
+      fr: valeur vie client
+    alt:
+      sv: [kundens livstidsvärde]
+      es: [valor de vida del cliente]
+    def:
+      en: >-
+        The expected total value of a customer relationship over its whole
+        duration. Used to decide where CRM effort pays off.
+      fi: >-
+        Asiakassuhteen odotettu kokonaisarvo koko sen keston ajalta. Sen avulla
+        arvioidaan, mihin asiakkuudenhallinnan panokset kannattaa kohdistaa.
+      sv: >-
+        Det förväntade totala värdet av en kundrelation under hela dess
+        varaktighet. Används för att avgöra var CRM-insatser lönar sig.
+      es: >-
+        Valor total esperado de una relación con un cliente a lo largo de toda su
+        duración. Se utiliza para decidir dónde compensa el esfuerzo de CRM.
+      pt: >-
+        Valor total esperado de uma relação com um cliente ao longo de toda a sua
+        duração. Usa-se para decidir onde compensa o esforço de CRM.
+      fr: >-
+        Valeur totale attendue d'une relation client sur toute sa durée. Elle
+        sert à décider où l'effort de GRC est rentable.
+    related: [segmentation, crm]
+    see: ["Padilla & Ascarza (2021)"]
+    status: draft
+
+  # ── Processes ────────────────────────────────────────────────────
+
+  - id: business-process
+    category: process
+    term:
+      en: Business process
+      fi: liiketoimintaprosessi
+      sv: affärsprocess
+      es: proceso de negocio
+      pt: processo de negócio
+      fr: processus métier
+    alt:
+      sv: [verksamhetsprocess]
+    fi_split: liike|toiminta|prosessi
+    fi_gloss: business|activity|process
+    def:
+      en: >-
+        A set of related activities that turns inputs into a result a customer
+        values, such as order-to-cash or procure-to-pay.
+      fi: >-
+        Toisiinsa liittyvien toimintojen sarja, joka tuottaa asiakkaalle
+        arvokkaan lopputuloksen, kuten tilaus-toimitusprosessi tai
+        hankinnasta maksuun -prosessi.
+      sv: >-
+        En följd av sammanhängande aktiviteter som omvandlar insatser till ett
+        resultat som kunden värdesätter, till exempel order-till-betalning eller
+        inköp-till-betalning.
+      es: >-
+        Conjunto de actividades relacionadas que transforma entradas en un
+        resultado valioso para el cliente, como del pedido al cobro o de la
+        compra al pago.
+      pt: >-
+        Conjunto de atividades relacionadas que transforma entradas num
+        resultado valorizado pelo cliente, como da encomenda à cobrança ou da
+        compra ao pagamento.
+      fr: >-
+        Ensemble d'activités liées qui transforme des entrées en un résultat
+        apprécié par le client, comme de la commande à l'encaissement ou de
+        l'achat au paiement.
+    related: [order-to-cash, procure-to-pay, as-is-to-be]
+    status: draft
+
+  - id: order-to-cash
+    category: process
+    abbr: O2C
+    term:
+      en: Order-to-cash
+      fi: tilaus-toimitusprosessi
+      sv: order-till-betalning
+      es: del pedido al cobro
+      pt: da encomenda à cobrança
+      fr: de la commande à l'encaissement
+    def:
+      en: >-
+        The end-to-end process from receiving a customer order to collecting
+        the payment: order, delivery, invoice, payment.
+      fi: >-
+        Kokonaisprosessi asiakkaan tilauksen vastaanotosta maksun saamiseen:
+        tilaus, toimitus, laskutus ja maksu.
+      sv: >-
+        Hela processen från att en kundorder tas emot till att betalningen kommer
+        in: order, leverans, faktura, betalning.
+      es: >-
+        Proceso completo desde la recepción del pedido de un cliente hasta el
+        cobro: pedido, entrega, factura y pago.
+      pt: >-
+        Processo completo desde a receção da encomenda de um cliente até à
+        cobrança: encomenda, entrega, fatura e pagamento.
+      fr: >-
+        Processus complet depuis la réception de la commande d'un client jusqu'à
+        l'encaissement : commande, livraison, facture, paiement.
+    related: [sales-order, invoice, procure-to-pay]
+    course: Hands-on Exercise 1 walks through this process in Dolibarr.
+    status: draft
+
+  - id: procure-to-pay
+    category: process
+    abbr: P2P
+    term:
+      en: Procure-to-pay
+      fi: hankinnasta maksuun -prosessi
+      sv: inköp-till-betalning
+      es: de la compra al pago
+      pt: da compra ao pagamento
+      fr: de l'achat au paiement
+    def:
+      en: >-
+        The end-to-end process of buying: requisition, purchase order, receipt
+        of goods, supplier invoice and payment.
+      fi: >-
+        Ostamisen kokonaisprosessi: tarve, ostotilaus, tavaran vastaanotto,
+        ostolasku ja maksu.
+      sv: >-
+        Hela inköpsprocessen: behov, inköpsorder, godsmottagning,
+        leverantörsfaktura och betalning.
+      es: >-
+        Proceso completo de compra: solicitud, pedido de compra, recepción de la
+        mercancía, factura del proveedor y pago.
+      pt: >-
+        Processo completo de compra: requisição, encomenda a fornecedor, receção
+        dos bens, fatura do fornecedor e pagamento.
+      fr: >-
+        Processus d'achat complet : demande d'achat, commande fournisseur,
+        réception des marchandises, facture fournisseur et paiement.
+    related: [purchase-order, invoice, order-to-cash]
+    status: draft
+
+  - id: as-is-to-be
+    category: process
+    term:
+      en: AS-IS and TO-BE process
+      fi: nykytila ja tavoitetila
+      sv: nuläge och börläge
+      es: situación actual y situación futura
+      pt: situação atual e situação futura
+      fr: situation actuelle et situation cible
+    def:
+      en: >-
+        AS-IS describes how a process runs today; TO-BE describes how it should
+        run after improvement, for example once bottlenecks are removed.
+      fi: >-
+        Nykytila kuvaa, miten prosessi toimii nyt; tavoitetila kuvaa, miten sen
+        pitäisi toimia kehittämisen jälkeen, esimerkiksi kun pullonkaulat on
+        poistettu.
+      sv: >-
+        Nuläget beskriver hur en process fungerar i dag; börläget beskriver hur
+        den bör fungera efter förbättring, till exempel när flaskhalsarna har
+        tagits bort.
+      es: >-
+        La situación actual describe cómo funciona hoy un proceso; la situación
+        futura, cómo debería funcionar tras la mejora, por ejemplo una vez
+        eliminados los cuellos de botella.
+      pt: >-
+        A situação atual descreve como um processo funciona hoje; a situação
+        futura, como deve funcionar depois de melhorado, por exemplo quando
+        forem eliminados os estrangulamentos.
+      fr: >-
+        La situation actuelle décrit le fonctionnement d'un processus
+        aujourd'hui ; la situation cible, son fonctionnement après amélioration,
+        par exemple une fois les goulots d'étranglement supprimés.
+    related: [business-process, bottleneck]
+    status: draft
+
+  - id: bottleneck
+    category: process
+    term:
+      en: Bottleneck
+      fi: pullonkaula
+      sv: flaskhals
+      es: cuello de botella
+      pt: estrangulamento
+      fr: goulot d'étranglement
+    alt:
+      pt: [gargalo]
+    fi_split: pullon|kaula
+    fi_gloss: of a bottle|neck
+    def:
+      en: >-
+        The step in a process with the lowest capacity, which therefore limits
+        the throughput of the whole process.
+      fi: >-
+        Prosessin vaihe, jonka kapasiteetti on pienin ja joka siksi rajoittaa
+        koko prosessin läpimenoa.
+      sv: >-
+        Det steg i en process som har lägst kapacitet och därför begränsar hela
+        processens genomflöde.
+      es: >-
+        Etapa de un proceso con la menor capacidad, que por ello limita el
+        rendimiento de todo el proceso.
+      pt: >-
+        Etapa de um processo com a menor capacidade, que por isso limita o fluxo
+        de todo o processo.
+      fr: >-
+        Étape d'un processus dont la capacité est la plus faible et qui limite
+        donc le débit de l'ensemble du processus.
+    related: [as-is-to-be, business-process]
+    status: draft
+
+  - id: sequence-diagram
+    category: process
+    term:
+      en: UML sequence diagram
+      fi: sekvenssikaavio
+      sv: sekvensdiagram
+      es: diagrama de secuencia
+      pt: diagrama de sequência
+      fr: diagramme de séquence
+    alt:
+      fi: [UML-sekvenssikaavio]
+    fi_split: sekvenssi|kaavio
+    fi_gloss: sequence|diagram
+    def:
+      en: >-
+        A diagram showing how participants – people and systems – exchange
+        messages over time in one interaction.
+      fi: >-
+        Kaavio, joka näyttää, miten osallistujat – ihmiset ja järjestelmät –
+        vaihtavat viestejä ajan kuluessa yhdessä vuorovaikutustilanteessa.
+      sv: >-
+        Ett diagram som visar hur deltagare – människor och system – utbyter
+        meddelanden över tid i en interaktion.
+      es: >-
+        Diagrama que muestra cómo los participantes – personas y sistemas –
+        intercambian mensajes a lo largo del tiempo en una interacción.
+      pt: >-
+        Diagrama que mostra como os participantes – pessoas e sistemas – trocam
+        mensagens ao longo do tempo numa interação.
+      fr: >-
+        Diagramme montrant comment des participants – personnes et systèmes –
+        échangent des messages au fil du temps au cours d'une interaction.
+    related: [business-process]
+    course: Theoretical Exercise 1
+    status: draft
+
+  # ── Data & integration ───────────────────────────────────────────
+
+  - id: master-data
+    category: data
+    term:
+      en: Master data
+      fi: perustieto
+      sv: grunddata
+      es: datos maestros
+      pt: dados mestre
+      fr: données de référence
+    alt:
+      fi: [ydintieto]
+      sv: [masterdata]
+      fr: [données maîtres]
+    fi_split: perus|tieto
+    fi_gloss: basic|data
+    def:
+      en: >-
+        Core, relatively stable data shared across processes – customers,
+        suppliers, products, the chart of accounts – as opposed to transaction
+        data.
+      fi: >-
+        Prosessien yhteinen, suhteellisen pysyvä tieto – asiakkaat, toimittajat,
+        tuotteet, tilikartta – erotuksena tapahtumatiedosta.
+      sv: >-
+        Centrala, relativt stabila data som delas mellan processer – kunder,
+        leverantörer, produkter, kontoplan – till skillnad från transaktionsdata.
+      es: >-
+        Datos básicos y relativamente estables que comparten los procesos –
+        clientes, proveedores, productos, plan de cuentas – a diferencia de los
+        datos transaccionales.
+      pt: >-
+        Dados centrais e relativamente estáveis partilhados pelos processos –
+        clientes, fornecedores, produtos, plano de contas – por oposição aos
+        dados transacionais.
+      fr: >-
+        Données centrales et relativement stables partagées par les processus –
+        clients, fournisseurs, produits, plan comptable – par opposition aux
+        données transactionnelles.
+    related: [transaction-data, erp]
+    status: draft
+
+  - id: transaction-data
+    category: data
+    term:
+      en: Transaction data
+      fi: tapahtumatieto
+      sv: transaktionsdata
+      es: datos transaccionales
+      pt: dados transacionais
+      fr: données transactionnelles
+    fi_split: tapahtuma|tieto
+    fi_gloss: transaction|data
+    def:
+      en: >-
+        Data recording individual business events – an order, a delivery, a
+        payment – each tied to a date and to master data.
+      fi: >-
+        Yksittäisiä liiketapahtumia – tilausta, toimitusta, maksua – kuvaava
+        tieto, joka liittyy aina päivämäärään ja perustietoihin.
+      sv: >-
+        Data som registrerar enskilda affärshändelser – en order, en leverans, en
+        betalning – var och en kopplad till ett datum och till grunddata.
+      es: >-
+        Datos que registran hechos de negocio concretos – un pedido, una entrega,
+        un pago – cada uno ligado a una fecha y a datos maestros.
+      pt: >-
+        Dados que registam acontecimentos de negócio concretos – uma encomenda,
+        uma entrega, um pagamento – cada um ligado a uma data e a dados mestre.
+      fr: >-
+        Données qui enregistrent des événements métier précis – une commande, une
+        livraison, un paiement – chacun rattaché à une date et à des données de
+        référence.
+    related: [master-data, tps]
+    status: draft
+
+  - id: relational-database
+    category: data
+    term:
+      en: Relational database
+      fi: relaatiotietokanta
+      sv: relationsdatabas
+      es: base de datos relacional
+      pt: base de dados relacional
+      fr: base de données relationnelle
+    fi_split: relaatio|tieto|kanta
+    fi_gloss: relation|data|base
+    def:
+      en: >-
+        A database that stores data in tables linked by keys and is queried
+        with SQL.
+      fi: >-
+        Tietokanta, joka tallentaa tiedot avaimilla toisiinsa liitettyihin
+        tauluihin ja jota käytetään SQL-kielellä.
+      sv: >-
+        En databas som lagrar data i tabeller som kopplas samman med nycklar och
+        som frågas med SQL.
+      es: >-
+        Base de datos que almacena los datos en tablas vinculadas mediante claves
+        y que se consulta con SQL.
+      pt: >-
+        Base de dados que armazena os dados em tabelas ligadas por chaves e que é
+        consultada com SQL.
+      fr: >-
+        Base de données qui stocke les données dans des tables reliées par des
+        clés et que l'on interroge en SQL.
+    related: [sql, master-data]
+    course: Hands-on Exercise 2 – Dolibarr runs on a MySQL/MariaDB or PostgreSQL database.
+    status: draft
+
+  - id: sql
+    category: data
+    abbr: SQL
+    term:
+      en: Structured Query Language
+      fi: SQL-kyselykieli
+      sv: frågespråket SQL
+      es: lenguaje de consulta estructurado
+      pt: linguagem de consulta estruturada
+      fr: langage de requête structuré
+    def:
+      en: >-
+        The standard language for querying and changing data in relational
+        databases.
+      fi: >-
+        Relaatiotietokantojen tiedon hakuun ja muokkaamiseen käytettävä
+        vakiintunut kieli.
+      sv: >-
+        Standardspråket för att hämta och ändra data i relationsdatabaser.
+      es: >-
+        Lenguaje estándar para consultar y modificar datos en bases de datos
+        relacionales.
+      pt: >-
+        Linguagem normalizada para consultar e alterar dados em bases de dados
+        relacionais.
+      fr: >-
+        Langage standard pour interroger et modifier les données des bases de
+        données relationnelles.
+    related: [relational-database, crud]
+    course: Hands-on Exercise 2
+    status: draft
+
+  - id: api
+    category: data
+    abbr: API
+    term:
+      en: Application programming interface
+      fi: ohjelmointirajapinta
+      sv: programmeringsgränssnitt
+      es: interfaz de programación de aplicaciones
+      pt: interface de programação de aplicações
+      fr: interface de programmation d'applications
+    alt:
+      fi: [rajapinta]
+    fi_split: ohjelmointi|raja|pinta
+    fi_gloss: programming|boundary|surface
+    def:
+      en: >-
+        A defined way for one program to request data or actions from another.
+      fi: >-
+        Määritelty tapa, jolla ohjelma voi pyytää toiselta ohjelmalta tietoja
+        tai toimintoja.
+      sv: >-
+        Ett definierat sätt för ett program att begära data eller åtgärder från
+        ett annat.
+      es: >-
+        Forma definida en que un programa puede solicitar datos o acciones a
+        otro.
+      pt: >-
+        Forma definida de um programa pedir dados ou ações a outro.
+      fr: >-
+        Manière définie dont un programme peut demander des données ou des
+        actions à un autre.
+    related: [rest-api, integration]
+    status: draft
+
+  - id: rest-api
+    category: data
+    term:
+      en: REST API
+      fi: REST-rajapinta
+      sv: REST-API
+      es: API REST
+      pt: API REST
+      fr: API REST
+    def:
+      en: >-
+        A web API that exposes resources (customers, orders…) at URLs and
+        changes them with HTTP methods – GET, POST, PUT, DELETE – usually
+        exchanging JSON.
+      fi: >-
+        Verkkorajapinta, joka tarjoaa resursseja (asiakkaat, tilaukset…)
+        URL-osoitteissa ja jonka kautta niitä käsitellään HTTP-metodeilla –
+        GET, POST, PUT, DELETE – yleensä JSON-muodossa.
+      sv: >-
+        Ett webb-API som exponerar resurser (kunder, order …) på URL:er och
+        ändrar dem med HTTP-metoder – GET, POST, PUT, DELETE – vanligen i
+        JSON-format.
+      es: >-
+        API web que expone recursos (clientes, pedidos…) en URL y los modifica
+        con métodos HTTP – GET, POST, PUT, DELETE –, normalmente intercambiando
+        JSON.
+      pt: >-
+        API web que expõe recursos (clientes, encomendas…) em URL e os altera com
+        métodos HTTP – GET, POST, PUT, DELETE –, normalmente trocando JSON.
+      fr: >-
+        API web qui expose des ressources (clients, commandes…) à des URL et les
+        modifie avec les méthodes HTTP – GET, POST, PUT, DELETE –, généralement
+        en échangeant du JSON.
+    related: [api, crud, integration]
+    course: Hands-on Exercise 3
+    status: draft
+
+  - id: crud
+    category: data
+    abbr: CRUD
+    term:
+      en: Create, read, update, delete
+      fi: CRUD-operaatiot
+      sv: CRUD-operationer
+      es: operaciones CRUD
+      pt: operações CRUD
+      fr: opérations CRUD
+    def:
+      en: >-
+        The four basic operations on stored data. In a REST API they map to
+        POST, GET, PUT/PATCH and DELETE.
+      fi: >-
+        Tallennetun tiedon neljä perusoperaatiota: luonti, luku, päivitys ja
+        poisto. REST-rajapinnassa niitä vastaavat POST, GET, PUT/PATCH ja
+        DELETE.
+      sv: >-
+        De fyra grundläggande operationerna på lagrade data: skapa, läsa,
+        uppdatera och ta bort. I ett REST-API motsvaras de av POST, GET,
+        PUT/PATCH och DELETE.
+      es: >-
+        Las cuatro operaciones básicas sobre datos almacenados: crear, leer,
+        actualizar y eliminar. En una API REST corresponden a POST, GET,
+        PUT/PATCH y DELETE.
+      pt: >-
+        As quatro operações básicas sobre dados armazenados: criar, ler,
+        atualizar e eliminar. Numa API REST correspondem a POST, GET, PUT/PATCH
+        e DELETE.
+      fr: >-
+        Les quatre opérations de base sur les données stockées : créer, lire,
+        mettre à jour et supprimer. Dans une API REST, elles correspondent à
+        POST, GET, PUT/PATCH et DELETE.
+    related: [rest-api, sql]
+    course: Hands-on Exercise 3
+    status: draft
+
+  - id: integration
+    category: data
+    term:
+      en: Integration
+      fi: integraatio
+      sv: integration
+      es: integración
+      pt: integração
+      fr: intégration
+    def:
+      en: >-
+        Connecting systems so that they exchange data automatically – for
+        example, passing web-shop orders into the ERP.
+      fi: >-
+        Järjestelmien yhdistäminen niin, että ne vaihtavat tietoa automaattisesti
+        – esimerkiksi verkkokaupan tilausten siirto ERP-järjestelmään.
+      sv: >-
+        Att koppla ihop system så att de utbyter data automatiskt – till exempel
+        att föra över order från webbutiken till affärssystemet.
+      es: >-
+        Conexión de sistemas para que intercambien datos automáticamente – por
+        ejemplo, pasar los pedidos de la tienda en línea al ERP.
+      pt: >-
+        Ligação de sistemas para que troquem dados automaticamente – por exemplo,
+        passar as encomendas da loja online para o ERP.
+      fr: >-
+        Connexion de systèmes pour qu'ils échangent des données automatiquement
+        – par exemple, transférer les commandes de la boutique en ligne vers
+        l'ERP.
+    related: [api, rest-api, enterprise-architecture]
+    see: ["Kähkönen, Smolander & Maglyas (2017)"]
+    status: draft
+
+  # ── Implementation ───────────────────────────────────────────────
+
+  - id: erp-implementation
+    category: implementation
+    term:
+      en: ERP implementation
+      fi: toiminnanohjausjärjestelmän käyttöönotto
+      sv: införande av affärssystem
+      es: implantación de un ERP
+      pt: implementação de um ERP
+      fr: mise en œuvre d'un ERP
+    alt:
+      fi: [ERP-käyttöönotto]
+      es: [implementación de un ERP]
+      fr: [déploiement d'un ERP]
+    def:
+      en: >-
+        The project of selecting, configuring, migrating data to and rolling
+        out an ERP system, including training and changing work practices.
+      fi: >-
+        Hanke, jossa ERP-järjestelmä valitaan, parametroidaan, siihen siirretään
+        tiedot ja se otetaan käyttöön – koulutus ja työtapojen muutos mukaan
+        lukien.
+      sv: >-
+        Projektet att välja, konfigurera, migrera data till och driftsätta ett
+        affärssystem, inklusive utbildning och förändrade arbetssätt.
+      es: >-
+        Proyecto de seleccionar, configurar, migrar datos a un sistema ERP y
+        ponerlo en marcha, incluidos la formación y el cambio en las formas de
+        trabajar.
+      pt: >-
+        Projeto de selecionar, configurar, migrar dados para um sistema ERP e
+        colocá-lo em funcionamento, incluindo a formação e a mudança nas formas
+        de trabalhar.
+      fr: >-
+        Projet consistant à choisir, paramétrer, alimenter en données et
+        déployer un ERP, y compris la formation et l'évolution des façons de
+        travailler.
+    related: [configuration, data-migration, misfit]
+    see: ["Tan et al. (2020)", "Markus, Tanis & van Fenema (2000)"]
+    status: draft
+
+  - id: configuration
+    category: implementation
+    term:
+      en: Configuration
+      fi: parametrointi
+      sv: konfigurering
+      es: configuración
+      pt: configuração
+      fr: paramétrage
+    alt:
+      fi: [konfigurointi]
+      sv: [parametrisering]
+      es: [parametrización]
+      pt: [parametrização]
+      fr: [configuration]
+    def:
+      en: >-
+        Adapting a packaged system through its built-in settings, without
+        changing its code.
+      fi: >-
+        Valmisohjelmiston mukauttaminen sen omilla asetuksilla muuttamatta
+        ohjelmakoodia.
+      sv: >-
+        Att anpassa ett standardsystem med dess inbyggda inställningar, utan att
+        ändra koden.
+      es: >-
+        Adaptación de un sistema estándar mediante sus propios ajustes, sin
+        modificar su código.
+      pt: >-
+        Adaptação de um sistema normalizado através das suas próprias
+        definições, sem alterar o código.
+      fr: >-
+        Adaptation d'un progiciel au moyen de ses réglages intégrés, sans
+        modifier son code.
+    related: [customization, module]
+    status: draft
+
+  - id: customization
+    category: implementation
+    term:
+      en: Customization
+      fi: räätälöinti
+      sv: kundanpassning
+      es: personalización
+      pt: personalização
+      fr: développement spécifique
+    alt:
+      en: [customisation]
+      sv: [skräddarsydd anpassning]
+      es: [desarrollo a medida]
+      pt: [desenvolvimento à medida]
+      fr: [personnalisation]
+    def:
+      en: >-
+        Changing or extending a system's code to meet needs its settings cannot
+        cover. It raises the cost of upgrades and maintenance.
+      fi: >-
+        Järjestelmän koodin muuttaminen tai laajentaminen tarpeisiin, joihin
+        asetukset eivät riitä. Se nostaa päivitysten ja ylläpidon kustannuksia.
+      sv: >-
+        Att ändra eller bygga ut systemets kod för behov som inställningarna inte
+        täcker. Det höjer kostnaderna för uppgraderingar och underhåll.
+      es: >-
+        Modificación o ampliación del código de un sistema para cubrir
+        necesidades que sus ajustes no cubren. Encarece las actualizaciones y el
+        mantenimiento.
+      pt: >-
+        Alteração ou extensão do código de um sistema para responder a
+        necessidades que as definições não cobrem. Encarece as atualizações e a
+        manutenção.
+      fr: >-
+        Modification ou extension du code d'un système pour couvrir des besoins
+        que le paramétrage ne permet pas. Elle augmente le coût des mises à jour
+        et de la maintenance.
+    related: [configuration, misfit]
+    status: draft
+
+  - id: misfit
+    category: implementation
+    term:
+      en: ERP misfit
+      fi: yhteensopimattomuus
+      sv: bristande passform
+      es: desajuste
+      pt: desajuste
+      fr: inadéquation
+    alt:
+      sv: [glapp]
+      fr: [écart fonctionnel]
+    def:
+      en: >-
+        A gap between what the packaged system does and how the organisation
+        works, or needs to work.
+      fi: >-
+        Ero sen välillä, mitä valmisjärjestelmä tekee, ja sen, miten
+        organisaatio toimii tai haluaa toimia.
+      sv: >-
+        Ett glapp mellan vad standardsystemet gör och hur organisationen arbetar
+        eller behöver arbeta.
+      es: >-
+        Diferencia entre lo que hace el sistema estándar y la forma en que la
+        organización trabaja o necesita trabajar.
+      pt: >-
+        Diferença entre o que o sistema normalizado faz e a forma como a
+        organização trabalha ou precisa de trabalhar.
+      fr: >-
+        Écart entre ce que fait le progiciel et la façon dont l'organisation
+        travaille, ou doit travailler.
+    related: [customization, workaround]
+    see: ["Soh, Kien & Tay-Yap (2000)", "van Beijsterveld & van Groenendaal (2016)"]
+    status: draft
+
+  - id: workaround
+    category: implementation
+    term:
+      en: Workaround
+      fi: kiertotie
+      sv: kringgående lösning
+      es: solución alternativa
+      pt: solução de contorno
+      fr: solution de contournement
+    alt:
+      sv: [workaround]
+    fi_split: kierto|tie
+    fi_gloss: around|road
+    def:
+      en: >-
+        A way users get their work done around the system's intended use when
+        the system does not fit their needs.
+      fi: >-
+        Tapa, jolla käyttäjät saavat työnsä tehtyä järjestelmän tarkoitetun
+        käytön ohi, kun järjestelmä ei vastaa heidän tarpeitaan.
+      sv: >-
+        Ett sätt för användare att få arbetet gjort förbi systemets avsedda
+        användning när systemet inte passar deras behov.
+      es: >-
+        Forma en que los usuarios sacan adelante su trabajo al margen del uso
+        previsto del sistema cuando este no se ajusta a sus necesidades.
+      pt: >-
+        Forma de os utilizadores conseguirem fazer o seu trabalho à margem do uso
+        previsto do sistema, quando este não responde às suas necessidades.
+      fr: >-
+        Façon dont les utilisateurs accomplissent leur travail en marge de
+        l'usage prévu du système, lorsque celui-ci ne répond pas à leurs besoins.
+    related: [misfit]
+    see: ["Malaurent & Karanasios (2020)"]
+    status: draft
+
+  - id: data-migration
+    category: implementation
+    term:
+      en: Data migration
+      fi: tiedonsiirto
+      sv: datamigrering
+      es: migración de datos
+      pt: migração de dados
+      fr: migration de données
+    alt:
+      fi: [migraatio, konversio]
+      fr: [reprise de données]
+    fi_split: tiedon|siirto
+    fi_gloss: of data|transfer
+    def:
+      en: >-
+        Moving and converting data from old systems into the new one during an
+        implementation.
+      fi: >-
+        Tietojen siirtäminen ja muuntaminen vanhoista järjestelmistä uuteen
+        käyttöönoton yhteydessä.
+      sv: >-
+        Att flytta och konvertera data från gamla system till det nya i samband
+        med ett införande.
+      es: >-
+        Traslado y conversión de datos de los sistemas antiguos al nuevo durante
+        una implantación.
+      pt: >-
+        Transferência e conversão de dados dos sistemas antigos para o novo
+        durante uma implementação.
+      fr: >-
+        Transfert et conversion des données des anciens systèmes vers le nouveau
+        lors d'une mise en œuvre.
+    related: [erp-implementation, master-data]
+    status: draft
+
+  # ── Strategy ─────────────────────────────────────────────────────
+
+  - id: saas
+    category: strategy
+    abbr: SaaS
+    term:
+      en: Software as a service
+      fi: ohjelmisto palveluna
+      sv: programvara som tjänst
+      es: software como servicio
+      pt: software como serviço
+      fr: logiciel en tant que service
+    alt:
+      en: [cloud ERP]
+      fi: [pilvipalvelu]
+    def:
+      en: >-
+        Software delivered over the internet on subscription, run and updated
+        by the vendor rather than installed on the customer's own servers.
+      fi: >-
+        Internetin kautta tilauspohjaisesti toimitettava ohjelmisto, jota
+        toimittaja ylläpitää ja päivittää; sitä ei asenneta asiakkaan omille
+        palvelimille.
+      sv: >-
+        Programvara som levereras via internet som en prenumeration och som
+        leverantören driver och uppdaterar, i stället för att den installeras på
+        kundens egna servrar.
+      es: >-
+        Software que se presta a través de internet mediante suscripción y que el
+        proveedor opera y actualiza, en lugar de instalarse en los servidores
+        del cliente.
+      pt: >-
+        Software disponibilizado pela internet por subscrição, operado e
+        atualizado pelo fornecedor, em vez de ser instalado nos servidores do
+        cliente.
+      fr: >-
+        Logiciel fourni par internet sur abonnement, exploité et mis à jour par
+        l'éditeur, au lieu d'être installé sur les serveurs du client.
+    related: [tco, open-source]
+    see: ["Xiao et al. (2020)", "Huang et al. (2021)"]
+    status: draft
+
+  - id: open-source
+    category: strategy
+    abbr: OSS
+    term:
+      en: Open-source software
+      fi: avoimen lähdekoodin ohjelmisto
+      sv: programvara med öppen källkod
+      es: software de código abierto
+      pt: software de código aberto
+      fr: logiciel libre
+    alt:
+      fr: [logiciel open source]
+    def:
+      en: >-
+        Software whose source code is published under a licence that lets
+        anyone use, study, change and share it.
+      fi: >-
+        Ohjelmisto, jonka lähdekoodi on julkaistu lisenssillä, joka sallii kenen
+        tahansa käyttää, tutkia, muuttaa ja jakaa sitä.
+      sv: >-
+        Programvara vars källkod publiceras under en licens som låter vem som
+        helst använda, studera, ändra och dela den.
+      es: >-
+        Software cuyo código fuente se publica con una licencia que permite a
+        cualquiera usarlo, estudiarlo, modificarlo y compartirlo.
+      pt: >-
+        Software cujo código-fonte é publicado com uma licença que permite a
+        qualquer pessoa usá-lo, estudá-lo, alterá-lo e partilhá-lo.
+      fr: >-
+        Logiciel dont le code source est publié sous une licence qui permet à
+        chacun de l'utiliser, de l'étudier, de le modifier et de le partager.
+    related: [saas, tco]
+    course: Dolibarr, the course ERP/CRM, is open-source.
+    status: draft
+
+  - id: digital-transformation
+    category: strategy
+    term:
+      en: Digital transformation
+      fi: digitaalinen transformaatio
+      sv: digital transformation
+      es: transformación digital
+      pt: transformação digital
+      fr: transformation numérique
+    alt:
+      fi: [digimuutos]
+      fr: [transformation digitale]
+    def:
+      en: >-
+        Organisation-wide change in how value is created, enabled by digital
+        technologies – broader than automating existing processes.
+      fi: >-
+        Digitaalisen teknologian mahdollistama, koko organisaation laajuinen
+        muutos tavassa luoda arvoa – laajempi kuin olemassa olevien prosessien
+        automatisointi.
+      sv: >-
+        En organisationsövergripande förändring av hur värde skapas, möjliggjord
+        av digital teknik – bredare än att automatisera befintliga processer.
+      es: >-
+        Cambio en toda la organización en la forma de crear valor, posibilitado
+        por las tecnologías digitales; va más allá de automatizar los procesos
+        existentes.
+      pt: >-
+        Mudança em toda a organização na forma de criar valor, possibilitada
+        pelas tecnologias digitais; vai além de automatizar os processos
+        existentes.
+      fr: >-
+        Changement à l'échelle de toute l'organisation dans la manière de créer
+        de la valeur, rendu possible par les technologies numériques ; il va
+        au-delà de l'automatisation des processus existants.
+    related: [enterprise-architecture, competitive-advantage]
+    see: ["Wessel et al. (2021)", "Sebastian et al. (2017)"]
+    status: draft
+
+  - id: enterprise-architecture
+    category: strategy
+    abbr: EA
+    term:
+      en: Enterprise architecture
+      fi: kokonaisarkkitehtuuri
+      sv: verksamhetsarkitektur
+      es: arquitectura empresarial
+      pt: arquitetura empresarial
+      fr: architecture d'entreprise
+    alt:
+      fi: [yritysarkkitehtuuri]
+      sv: [företagsarkitektur]
+    fi_split: kokonais|arkkitehtuuri
+    fi_gloss: whole|architecture
+    def:
+      en: >-
+        A structured description of how an organisation's processes,
+        information, systems and technology fit together, used to plan change.
+      fi: >-
+        Jäsennelty kuvaus siitä, miten organisaation prosessit, tieto,
+        järjestelmät ja teknologia sopivat yhteen. Sitä käytetään muutoksen
+        suunnitteluun.
+      sv: >-
+        En strukturerad beskrivning av hur organisationens processer,
+        information, system och teknik hänger ihop, som används för att planera
+        förändring.
+      es: >-
+        Descripción estructurada de cómo encajan los procesos, la información,
+        los sistemas y la tecnología de una organización, que se utiliza para
+        planificar el cambio.
+      pt: >-
+        Descrição estruturada de como se articulam os processos, a informação,
+        os sistemas e a tecnologia de uma organização, usada para planear a
+        mudança.
+      fr: >-
+        Description structurée de la manière dont les processus, l'information,
+        les systèmes et la technologie d'une organisation s'articulent, utilisée
+        pour planifier le changement.
+    related: [integration, digital-transformation]
+    see: ["Niemi & Pekkola (2020)"]
+    status: draft
+
+  - id: competitive-advantage
+    category: strategy
+    term:
+      en: Competitive advantage
+      fi: kilpailuetu
+      sv: konkurrensfördel
+      es: ventaja competitiva
+      pt: vantagem competitiva
+      fr: avantage concurrentiel
+    fi_split: kilpailu|etu
+    fi_gloss: competition|advantage
+    def:
+      en: >-
+        An edge over rivals that lets a firm earn better returns. Carr (2003)
+        argued that widely available IT no longer provides one; others argue
+        that how it is used still can.
+      fi: >-
+        Etu kilpailijoihin nähden, joka mahdollistaa paremman kannattavuuden.
+        Carr (2003) väitti, ettei kaikkien saatavilla oleva tietotekniikka enää
+        tuota sitä; toisten mukaan sen käyttötapa voi yhä tuottaa.
+      sv: >-
+        Ett försprång gentemot konkurrenterna som gör att ett företag får bättre
+        avkastning. Carr (2003) hävdade att allmänt tillgänglig IT inte längre
+        ger något sådant; andra menar att sättet den används på fortfarande kan
+        göra det.
+      es: >-
+        Ventaja frente a los competidores que permite a una empresa obtener
+        mejores resultados. Carr (2003) sostuvo que la TI ampliamente disponible
+        ya no la proporciona; otros sostienen que la forma de usarla todavía
+        puede hacerlo.
+      pt: >-
+        Vantagem sobre os concorrentes que permite a uma empresa obter melhores
+        resultados. Carr (2003) defendeu que as TI amplamente disponíveis já não
+        a proporcionam; outros defendem que a forma como são usadas ainda pode.
+      fr: >-
+        Avance sur les concurrents qui permet à une entreprise d'obtenir de
+        meilleurs résultats. Carr (2003) soutenait que les TI largement
+        disponibles n'en procurent plus ; d'autres estiment que la manière de
+        les utiliser le peut encore.
+    related: [tco, digital-transformation]
+    see: ["Carr (2003)", "Sedera et al. (2016)"]
+    status: draft
+
+  - id: tco
+    category: strategy
+    abbr: TCO
+    term:
+      en: Total cost of ownership
+      fi: kokonaiskustannukset
+      sv: total ägandekostnad
+      es: coste total de propiedad
+      pt: custo total de propriedade
+      fr: coût total de possession
+    alt:
+      fi: [omistamisen kokonaiskustannukset, elinkaarikustannukset]
+      es: [costo total de propiedad]
+    fi_split: kokonais|kustannukset
+    fi_gloss: total|costs
+    def:
+      en: >-
+        All the costs of a system over its life – licences or subscriptions,
+        implementation, hardware, support, training and upgrades – not just
+        the purchase price.
+      fi: >-
+        Järjestelmän kaikki kustannukset sen elinkaaren aikana – lisenssit tai
+        tilausmaksut, käyttöönotto, laitteisto, tuki, koulutus ja päivitykset –
+        eikä vain hankintahinta.
+      sv: >-
+        Alla kostnader för ett system under dess livstid – licenser eller
+        abonnemang, införande, hårdvara, support, utbildning och uppgraderingar
+        – inte bara inköpspriset.
+      es: >-
+        Todos los costes de un sistema a lo largo de su vida – licencias o
+        suscripciones, implantación, hardware, soporte, formación y
+        actualizaciones –, no solo el precio de compra.
+      pt: >-
+        Todos os custos de um sistema ao longo da sua vida – licenças ou
+        subscrições, implementação, hardware, suporte, formação e atualizações
+        –, e não apenas o preço de compra.
+      fr: >-
+        Ensemble des coûts d'un système sur toute sa durée de vie – licences ou
+        abonnements, mise en œuvre, matériel, support, formation et mises à jour
+        –, et pas seulement le prix d'achat.
+    related: [saas, open-source]
+    status: draft
