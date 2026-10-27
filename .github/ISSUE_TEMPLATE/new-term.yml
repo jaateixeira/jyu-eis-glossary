@@ -1,0 +1,51 @@
+name: Suggest a term / Ehdota termiä
+description: Propose a new term for the glossary, or a correction to an existing one.
+title: "[Term] "
+labels: ["term"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping build the glossary. Fill in what you know – the teaching team completes the rest.
+        Kiitos! Täytä se, minkä tiedät – opetushenkilöstö täydentää loput.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Is this a new term or a correction? / Uusi termi vai korjaus?
+      options:
+        - New term / Uusi termi
+        - Correction to an existing term / Korjaus olemassa olevaan termiin
+    validations:
+      required: true
+  - type: input
+    id: en
+    attributes:
+      label: English term / Englanninkielinen termi
+      placeholder: e.g. Bill of materials
+    validations:
+      required: true
+  - type: input
+    id: fi
+    attributes:
+      label: Finnish term / Suomenkielinen termi
+      placeholder: esim. tuoterakenne
+  - type: textarea
+    id: other-languages
+    attributes:
+      label: Other languages (Swedish, Spanish, Portuguese, French) / Muut kielet
+      description: The term in any of the glossary's other languages, if you know it.
+      placeholder: |
+        sv: stycklista
+        es: lista de materiales
+  - type: textarea
+    id: definition
+    attributes:
+      label: Definition or correction / Määritelmä tai korjaus
+      description: In any of the glossary's languages. / Millä tahansa sanaston kielistä.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source / Lähde
+      description: A course reading, textbook page, lecture or URL. / Kurssin lukemisto, oppikirjan sivu, luento tai URL.
